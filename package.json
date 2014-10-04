@@ -1,0 +1,16 @@
+{
+  "name": "original",
+  "version": "0.0.0",
+  "description": "Check if two urls have same URL",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --reporter spec --ui bdd test.js"
+  },
+  "keywords": [
+    "origin",
+    "url",
+    "parse"
+  ],
+  "author": "Arnout Kazemier",
+  "license": "MIT"
+}
