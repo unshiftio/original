@@ -12,5 +12,8 @@
     "parse"
   ],
   "author": "Arnout Kazemier",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "url-parse": "0.0.x"
+  }
 }
