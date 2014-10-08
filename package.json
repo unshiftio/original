@@ -1,7 +1,7 @@
 {
   "name": "original",
-  "version": "0.0.0",
-  "description": "Check if two urls have same URL",
+  "version": "0.0.1",
+  "description": "Generate the origin from an URL or check if two URL/Origins are the same",
   "main": "index.js",
   "scripts": {
     "test": "mocha --reporter spec --ui bdd test.js"
