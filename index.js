@@ -25,9 +25,9 @@ function origin(url) {
   if (
        (80 === port && (protocol === 'http:' || protocol === 'ws:'))
     || (443 === port && (protocol === 'https:' || protocol === 'wss:'))
-  ) defaultport = false;
+  ) defaultport = true;
 
-  return url.protocol +'//'+ url.host + (defaultport ? '' : ':'+ port);
+  return url.protocol +'//'+ url.hostname + (defaultport ? '' : ':'+ port);
 }
 
 /**
