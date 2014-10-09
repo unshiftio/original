@@ -4,7 +4,8 @@
   "description": "Generate the origin from an URL or check if two URL/Origins are the same",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --reporter spec --ui bdd test.js"
+    "test": "mocha --reporter spec --ui bdd test.js",
+    "coverage": "istanbul cover ./node_modules/.bin/_mocha -- --reporter spec --ui bdd test.js"
   },
   "keywords": [
     "origin",
@@ -15,5 +16,11 @@
   "license": "MIT",
   "dependencies": {
     "url-parse": "0.0.x"
+  },
+  "devDependencies": {
+    "assume": "0.0.x",
+    "istanbul": "0.3.x",
+    "mocha": "1.21.x",
+    "pre-commit": "0.0.x"
   }
 }
