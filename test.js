@@ -1,7 +1,8 @@
 describe('original', function () {
   'use strict';
 
-  var assume = require('assume')
+  var parse = require('url-parse')
+    , assume = require('assume')
     , origin = require('./')
     , same = origin.same;
 
@@ -9,8 +10,19 @@ describe('original', function () {
     assume(origin).is.a('function');
   });
 
+  it('also accepts objects instead of strings', function () {
+    var o = origin(parse('http://google.com:80/pathname'));
+    assume(o).equals('http://google.com');
+  });
+
   it('removes default ports for http', function () {
     var o = origin('http://google.com:80/pathname');
+    assume(o).equals('http://google.com');
+
+    o = origin('http://google.com:80');
+    assume(o).equals('http://google.com');
+
+    o = origin('http://google.com');
     assume(o).equals('http://google.com');
 
     o = origin('https://google.com:443/pathname');

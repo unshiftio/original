@@ -12,9 +12,9 @@ var parse = require('url-parse');
 function origin(url) {
   if ('string' === typeof url) url = parse(url);
 
-  var protocol = url.protocol
-    , port = +url.port
-    , defaultport;
+  var defaultport
+    , protocol = url.protocol
+    , port = url.port && +url.port;
 
   //
   // Origins should not include the default port number:
@@ -23,7 +23,8 @@ function origin(url) {
   // @see https://url.spec.whatwg.org/#origin
   //
   if (
-       (80 === port && (protocol === 'http:' || protocol === 'ws:'))
+       !port
+    || (80 === port && (protocol === 'http:' || protocol === 'ws:'))
     || (443 === port && (protocol === 'https:' || protocol === 'wss:'))
   ) defaultport = true;
 
