@@ -1,6 +1,8 @@
 # origin(al)
 
 [![Build Status](https://travis-ci.org/unshiftio/original.svg?branch=master)](https://travis-ci.org/unshiftio/original)
+[![NPM version](https://badge.fury.io/js/original.svg)](http://badge.fury.io/js/original)
+[![Coverage Status](https://img.shields.io/coveralls/unshiftio/original.svg)](https://coveralls.io/r/unshiftio/original?branch=master)
 
 Original generates the origin URL for a given URL or URL object. In addition to
 that it also comes with a simple `same` function to check if two URL's have the
