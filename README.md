@@ -1,5 +1,7 @@
 # origin(al)
 
+[![Build Status](https://travis-ci.org/unshiftio/original.svg?branch=master)](https://travis-ci.org/unshiftio/original)
+
 Original generates the origin URL for a given URL or URL object. In addition to
 that it also comes with a simple `same` function to check if two URL's have the
 same origin.
