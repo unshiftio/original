@@ -33,6 +33,9 @@ describe('original', function () {
 
     o = origin('https://google.com:80/pathname');
     assume(o).equals('https://google.com:80');
+
+    o = origin('file://google.com/pathname');
+    assume(o).equals('file://google.com');
   });
 
   it('removes default ports for ws', function () {

@@ -12,7 +12,7 @@ var parse = require('url-parse');
 function origin(url) {
   if ('string' === typeof url) url = parse(url);
 
-  var defaultport
+  var noport
     , protocol = url.protocol
     , port = url.port && +url.port;
 
@@ -24,11 +24,12 @@ function origin(url) {
   //
   if (
        !port
-    || (80 === port && (protocol === 'http:' || protocol === 'ws:'))
-    || (443 === port && (protocol === 'https:' || protocol === 'wss:'))
-  ) defaultport = true;
+    || 'file:' === protocol
+    || (80 === port && ('http:' === protocol || 'ws:' === protocol ))
+    || (443 === port && ('https:' === protocol || 'wss:' === protocol))
+  ) noport = true;
 
-  return url.protocol +'//'+ url.hostname + (defaultport ? '' : ':'+ port);
+  return url.protocol +'//'+ url.hostname + (noport ? '' : ':'+ port);
 }
 
 /**
