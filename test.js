@@ -15,6 +15,18 @@ describe('original', function () {
     assume(o).equals('http://google.com');
   });
 
+  it('also accepts origins as origin', function () {
+    var o = origin('http://google.com:80/pathname');
+
+    assume(origin(o)).equals(o);
+  });
+
+  it('also accepts missing protocols', function () {
+    var o = origin('www.example.com');
+
+    assume(o).equals('http://www.example.com');
+  });
+
   it('removes default ports for http', function () {
     var o = origin('http://google.com:80/pathname');
     assume(o).equals('http://google.com');

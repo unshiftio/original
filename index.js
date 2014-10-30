@@ -10,7 +10,16 @@ var parse = require('url-parse');
  * @api public
  */
 function origin(url) {
-  if ('string' === typeof url) url = parse(url);
+  if ('string' === typeof url) {
+    //
+    // In order to correctly parse an URL it needs to be prefixed with
+    // a protocol or the parsers will all assume that the information we've
+    // given is a pathname instead of an URL. So we need to do a sanity check
+    // before parsing.
+    //
+    if (!/^(http|ws|file)s?/.test(url)) url = 'http://'+ url;
+    url = parse(url);
+  }
 
   var noport
     , protocol = url.protocol
