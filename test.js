@@ -21,6 +21,18 @@ describe('original', function () {
     assume(origin(o)).equals(o);
   });
 
+  it('lowercases the origin', function () {
+    var o = origin('hTtp://WwW.ExAMPLE.cOM:8080');
+
+    assume(o).equals('http://www.example.com:8080');
+
+    o = origin('https://www.EXAMPLE.com:8080');
+    assume(o).equals('https://www.example.com:8080');
+
+    o = origin('HTTPS://WWW.example.COM:8080');
+    assume(o).equals('https://www.example.com:8080');
+  });
+
   it('also accepts missing protocols', function () {
     var o = origin('www.example.com');
 
