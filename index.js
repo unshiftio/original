@@ -1,6 +1,7 @@
 'use strict';
 
-var parse = require('url-parse');
+var required = require('requires-port')
+  , parse = require('url-parse');
 
 /**
  * Transform an URL to a valid origin value.
@@ -17,28 +18,30 @@ function origin(url) {
     // given is a pathname instead of an URL. So we need to do a sanity check
     // before parsing.
     //
-    if (!/^(http|ws|file)s?/.test(url)) url = 'http://'+ url;
-    url = parse(url);
+    if (!/^(http|ws|file)s?/i.test(url)) url = 'http://'+ url;
+    url = parse(url.toLowerCase());
   }
 
-  var noport
-    , protocol = url.protocol
-    , port = url.port && +url.port;
+  //
+  // 6.2.  ASCII Serialization of an Origin
+  // http://tools.ietf.org/html/rfc6454#section-6.2
+  //
+  // @TODO If we cannot generate a proper origin from the url because
+  // origin/host/port information is missing we should return the string `null`
+  //
+
+  var protocol = url.protocol
+    , port = url.port && +url.port
+    , noport = !required(port, protocol);
 
   //
-  // Origins should not include the default port number:
+  // 4. Origin of a URI
+  // http://tools.ietf.org/html/rfc6454#section-4
   //
-  // @see https://url.spec.whatwg.org/#default-port
-  // @see https://url.spec.whatwg.org/#origin
+  // States that url.scheme, host should be converted to lower case. This also
+  // makes it easier to match origins as everything is just lower case.
   //
-  if (
-       !port
-    || 'file:' === protocol
-    || (80 === port && ('http:' === protocol || 'ws:' === protocol ))
-    || (443 === port && ('https:' === protocol || 'wss:' === protocol))
-  ) noport = true;
-
-  return url.protocol +'//'+ url.hostname + (noport ? '' : ':'+ port);
+  return (url.protocol +'//'+ url.hostname + (noport ? '' : ':'+ port)).toLowerCase();
 }
 
 /**
