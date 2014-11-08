@@ -1,8 +1,6 @@
 # origin(al)
 
-[![Build Status](https://travis-ci.org/unshiftio/original.svg?branch=master)](https://travis-ci.org/unshiftio/original)
-[![NPM version](https://badge.fury.io/js/original.svg)](http://badge.fury.io/js/original)
-[![Coverage Status](https://img.shields.io/coveralls/unshiftio/original.svg)](https://coveralls.io/r/unshiftio/original?branch=master)
+[![Made by unshift](https://img.shields.io/badge/made%20by-unshift-00ffcc.svg?style=flat-square)](http://unshift.io)[![Version npm](http://img.shields.io/npm/v/original.svg?style=flat-square)](http://browsenpm.org/package/original)[![Build Status](http://img.shields.io/travis/unshiftio/original/master.svg?style=flat-square)](https://travis-ci.org/unshiftio/original)[![Dependencies](https://img.shields.io/david/unshiftio/original.svg?style=flat-square)](https://david-dm.org/unshiftio/original)[![Coverage Status](http://img.shields.io/coveralls/unshiftio/original/master.svg?style=flat-square)](https://coveralls.io/r/unshiftio/original?branch=master)[![IRC channel](http://img.shields.io/badge/IRC-irc.freenode.net%23unshift-00a8ff.svg?style=flat-square)](http://webchat.freenode.net/?channels=unshift)
 
 Original generates the origin URL for a given URL or URL object. In addition to
 that it also comes with a simple `same` function to check if two URL's have the
