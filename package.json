@@ -20,13 +20,13 @@
   "author": "Arnout Kazemier",
   "license": "MIT",
   "dependencies": {
-    "requires-port": "0.0.0",
-    "url-parse": "0.0.x"
+    "requires-port": "0.0.x",
+    "url-parse": "0.1.x"
   },
   "devDependencies": {
     "assume": "0.0.x",
     "istanbul": "0.3.x",
-    "mocha": "1.21.x",
+    "mocha": "2.0.x",
     "pre-commit": "0.0.x"
   }
 }
