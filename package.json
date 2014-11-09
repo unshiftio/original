@@ -1,6 +1,6 @@
 {
   "name": "original",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Generate the origin from an URL or check if two URL/Origins are the same",
   "main": "index.js",
   "scripts": {
