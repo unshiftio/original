@@ -1,7 +1,6 @@
 'use strict';
 
-var required = require('requires-port')
-  , parse = require('url-parse');
+var parse = require('url-parse');
 
 /**
  * Transform an URL to a valid origin value.
@@ -18,7 +17,7 @@ function origin(url) {
     // given is a pathname instead of an URL. So we need to do a sanity check
     // before parsing.
     //
-    if (!/^(http|ws|file)s?/i.test(url)) url = 'http://'+ url;
+    if (!/^(http|ws|file|blob)s?:/i.test(url)) url = 'http://'+ url;
     url = parse(url.toLowerCase());
   }
 
@@ -26,13 +25,12 @@ function origin(url) {
   // 6.2.  ASCII Serialization of an Origin
   // http://tools.ietf.org/html/rfc6454#section-6.2
   //
-  // @TODO If we cannot generate a proper origin from the url because
+  // @TODO If we cannot generate a proper origin from the URL because
   // origin/host/port information is missing we should return the string `null`
   //
 
   var protocol = url.protocol
-    , port = url.port && +url.port
-    , noport = !required(port, protocol);
+    , port = url.port && +url.port;
 
   //
   // 4. Origin of a URI
@@ -41,7 +39,7 @@ function origin(url) {
   // States that url.scheme, host should be converted to lower case. This also
   // makes it easier to match origins as everything is just lower case.
   //
-  return (url.protocol +'//'+ url.hostname + (noport ? '' : ':'+ port)).toLowerCase();
+  return (url.protocol +'//'+ url.hostname + (!port ? '' : ':'+ port)).toLowerCase();
 }
 
 /**

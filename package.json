@@ -20,7 +20,6 @@
   "author": "Arnout Kazemier",
   "license": "MIT",
   "dependencies": {
-    "requires-port": "0.0.x",
     "url-parse": "0.1.x"
   },
   "devDependencies": {
