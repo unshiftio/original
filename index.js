@@ -10,27 +10,13 @@ var parse = require('url-parse');
  * @api public
  */
 function origin(url) {
-  if ('string' === typeof url) {
-    //
-    // In order to correctly parse an URL it needs to be prefixed with
-    // a protocol or the parsers will all assume that the information we've
-    // given is a pathname instead of an URL. So we need to do a sanity check
-    // before parsing.
-    //
-    if (!/^(http|ws|file|blob)s?:/i.test(url)) url = 'http://'+ url;
-    url = parse(url.toLowerCase());
-  }
+  if ('string' === typeof url) url = parse(url);
 
   //
   // 6.2.  ASCII Serialization of an Origin
   // http://tools.ietf.org/html/rfc6454#section-6.2
   //
-  // @TODO If we cannot generate a proper origin from the URL because
-  // origin/host/port information is missing we should return the string `null`
-  //
-
-  var protocol = url.protocol
-    , port = url.port && +url.port;
+  if (!url.protocol || !url.hostname) return 'null';
 
   //
   // 4. Origin of a URI
@@ -39,7 +25,7 @@ function origin(url) {
   // States that url.scheme, host should be converted to lower case. This also
   // makes it easier to match origins as everything is just lower case.
   //
-  return (url.protocol +'//'+ url.hostname + (!port ? '' : ':'+ port)).toLowerCase();
+  return (url.protocol +'//'+ url.host).toLowerCase();
 }
 
 /**

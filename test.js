@@ -33,10 +33,16 @@ describe('original', function () {
     assume(o).equals('https://www.example.com:8080');
   });
 
-  it('also accepts missing protocols', function () {
+  it('returns "null" if the protocol is not specified', function () {
     var o = origin('www.example.com');
 
-    assume(o).equals('http://www.example.com');
+    assume(o).equals('null');
+  });
+
+  it('returns "null" if the hostname is not specified', function () {
+    var o = origin('http://');
+
+    assume(o).equals('null');
   });
 
   it('removes default ports for http', function () {
