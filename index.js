@@ -5,7 +5,7 @@ var parse = require('url-parse');
 /**
  * Transform an URL to a valid origin value.
  *
- * @param {String|Object} url URL to transform to it's origin.
+ * @param {String|Object} url URL to transform to its origin.
  * @returns {String} The origin.
  * @api public
  */
