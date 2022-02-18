@@ -19,7 +19,7 @@
   "author": "Arnout Kazemier",
   "license": "MIT",
   "dependencies": {
-    "url-parse": "^1.5.6"
+    "url-parse": "^1.5.7"
   },
   "devDependencies": {
     "assume": "~2.3.0",
