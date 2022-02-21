@@ -1,7 +1,5 @@
 'use strict';
 
-var parse = require('url-parse');
-
 /**
  * Transform an URL to a valid origin value.
  *
@@ -10,7 +8,13 @@ var parse = require('url-parse');
  * @api public
  */
 function origin(url) {
-  if ('string' === typeof url) url = parse(url);
+  if ('string' === typeof url) {
+    try {
+      url = new URL(url);
+    } catch (er) {
+      return 'null';
+    }
+  }
 
   //
   // 6.2.  ASCII Serialization of an Origin

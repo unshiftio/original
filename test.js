@@ -1,8 +1,7 @@
 describe('original', function () {
   'use strict';
 
-  var parse = require('url-parse')
-    , assume = require('assume')
+  var assume = require('assume')
     , origin = require('./')
     , same = origin.same;
 
@@ -11,7 +10,7 @@ describe('original', function () {
   });
 
   it('also accepts objects instead of strings', function () {
-    var o = origin(parse('http://google.com:80/pathname'));
+    var o = origin(new URL('http://google.com:80/pathname').origin);
     assume(o).equals('http://google.com');
   });
 
