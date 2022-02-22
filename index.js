@@ -14,6 +14,8 @@ function origin(url) {
     } catch (er) {
       return 'null';
     }
+  } else {
+    return url.origin;
   }
 }
 
