@@ -10,7 +10,7 @@
 function origin(url) {
   if ('string' === typeof url) {
     try {
-      url = new URL(url);
+      return new URL(url).origin;
     } catch (er) {
       return 'null';
     }
