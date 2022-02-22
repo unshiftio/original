@@ -10,17 +10,11 @@
 function origin(url) {
   if ('string' === typeof url) {
     try {
-      url = new URL(url);
+      return new URL(url).origin;
     } catch (er) {
       return 'null';
     }
   }
-
-  if (url.protocol !== 'file:') {
-    return url.origin
-  }
-
-  return (url.protocol +'//'+ url.host).toLowerCase();
 }
 
 /**
