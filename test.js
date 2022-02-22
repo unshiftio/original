@@ -10,7 +10,7 @@ describe('original', function () {
   });
 
   it('also accepts objects instead of strings', function () {
-    var o = origin(new URL('http://google.com:80/pathname').origin);
+    var o = origin(new URL('http://google.com:80/pathname'));
     assume(o).equals('http://google.com');
   });
 
