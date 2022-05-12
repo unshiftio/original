@@ -1,7 +1,5 @@
 'use strict';
 
-var parse = require('url-parse');
-
 /**
  * Transform an URL to a valid origin value.
  *
@@ -10,22 +8,15 @@ var parse = require('url-parse');
  * @api public
  */
 function origin(url) {
-  if ('string' === typeof url) url = parse(url);
-
-  //
-  // 6.2.  ASCII Serialization of an Origin
-  // http://tools.ietf.org/html/rfc6454#section-6.2
-  //
-  if (!url.protocol || !url.hostname) return 'null';
-
-  //
-  // 4. Origin of a URI
-  // http://tools.ietf.org/html/rfc6454#section-4
-  //
-  // States that url.scheme, host should be converted to lower case. This also
-  // makes it easier to match origins as everything is just lower case.
-  //
-  return (url.protocol +'//'+ url.host).toLowerCase();
+  if ('string' === typeof url) {
+    try {
+      return new URL(url).origin;
+    } catch (er) {
+      return 'null';
+    }
+  } else {
+    return url.origin;
+  }
 }
 
 /**
