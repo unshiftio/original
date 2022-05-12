@@ -44,7 +44,7 @@ describe('original', function () {
     assume(o).equals('null');
   });
 
-  it('returns "null" if the protocol is not file', function () {
+  it('returns "null" if the protocol is file:', function () {
     var o = origin('file://google.com/pathname');
     assume(o).equals('null');
   })
