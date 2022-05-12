@@ -32,24 +32,24 @@ describe('original', function () {
     assume(o).equals('https://www.example.com:8080');
   });
 
-  it('returns "null" if the protocol is not specified', function () {
+  it('returns `null` if the protocol is not specified', function () {
     var o = origin('www.example.com');
 
     assume(o).equals('null');
   });
 
-  it('returns "null" if the hostname is not specified', function () {
+  it('returns `null` if the hostname is not specified', function () {
     var o = origin('http://');
 
     assume(o).equals('null');
   });
 
-  it('returns "null" if the protocol is file:', function () {
+  it("returns `null` if the protocol is `'file:'`", function () {
     var o = origin('file://google.com/pathname');
     assume(o).equals('null');
   })
 
-  it('removes default ports for http', function () {
+  it("removes the default port if the protocol is `'http:'`", function () {
     var o = origin('http://google.com:80/pathname');
     assume(o).equals('http://google.com');
 
@@ -69,7 +69,7 @@ describe('original', function () {
     assume(o).equals('https://google.com:80');
   });
 
-  it('removes default ports for ws', function () {
+  it("removes the default port if the protocol is `'ws:'`", function () {
     var o = origin('ws://google.com:80/pathname');
     assume(o).equals('ws://google.com');
 
@@ -86,7 +86,7 @@ describe('original', function () {
   describe('.same', function () {
     assume(origin.same).is.a('function');
 
-    it('equals', function () {
+    it('returns `true` if the origins are the same', function () {
       assume(same('http://google.com', 'http://google.com:80')).is.true();
     });
   });
